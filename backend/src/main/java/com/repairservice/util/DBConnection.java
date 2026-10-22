@@ -5,11 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    // Aiven Cloud Database Details
-    private static final String URL = "jdbc:mysql://mysql-repair-service-repair-service-management-system.c.aivencloud.com:18075/repair_service_db?sslmode=REQUIRED";
+    // Aiven Cloud Database URL with SSL disabled verification for smooth cloud connection
+    private static final String URL = "jdbc:mysql://mysql-repair-service-repair-service-management-system.c.aivencloud.com:18075/repair_service_db?useSSL=true&trustServerCertificate=true";
     private static final String USER = "avnadmin";
     
-    // Aiven Console se copy kiya hua password yahan paste karo:
+    // Aapka actual Aiven password yahan direct daalna:
     private static final String PASSWORD = "AVNS_JBzGOt-s5r1ULrim3z-E";
 
     public static Connection getConnection() {
@@ -18,9 +18,9 @@ public class DBConnection {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException e) {
-            System.err.println("MySQL Driver not found in classpath: " + e.getMessage());
+            System.err.println("Driver Error: " + e.getMessage());
         } catch (SQLException e) {
-            System.err.println("Cloud database connection failed: " + e.getMessage());
+            System.err.println("Cloud DB Connection Error: " + e.getMessage());
         }
         return conn;
     }
