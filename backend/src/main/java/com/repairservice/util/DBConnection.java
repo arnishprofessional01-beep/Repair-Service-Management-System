@@ -9,7 +9,7 @@ public class DBConnection {
     private static final String USER = "avnadmin";
     
     // Yahan apna Aiven wala real password daal
-    private static final String PASSWORD = "APNA_AIVEN_PASSWORD_HERE";
+    private static final String PASSWORD = "AVNS_JBzGOt-s5r1ULrim3z-";
 
     public static Connection getConnection() {
         Connection conn = null;
