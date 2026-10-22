@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Requests - Repair Service</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <!-- Auth Guard (Case-insensitive check for Customer) -->
+  <script>
+    const role = sessionStorage.getItem("userRole");
+    if (!role || role.toLowerCase() !== "customer") {
+      window.location.href = "../login.html";
+    }
+  </script>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">Repair Service Portal</div>
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="create-request.html">Create Request</a>
+      <a href="my-requests.html" class="active">My Requests</a>
+    </div>
+    <div class="nav-user">
+      <span id="user-display">Customer</span>
+      <button id="logout-btn" class="btn-secondary">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <div class="table-container">
+      <div class="table-header">
+        <h2>My Repair Requests</h2>
+        <a href="create-request.html" class="btn-primary-link">+ New Request</a>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Service Type</th>
+              <th>Device</th>
+              <th>Problem</th>
+              <th>Preferred Date</th>
+              <th>Technician</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="requests-table-body">
+            <!-- Dynamically populated by customer.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <p id="no-requests-msg" class="empty-state hidden">No repair requests found. Create one using the button above.</p>
+    </div>
+  </div>
+
+  <script src="../js/customer.js?v=2"></script>
+</body>
+</html>

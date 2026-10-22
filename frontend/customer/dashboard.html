@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Dashboard - Repair Service</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <!-- Auth Guard (Case-insensitive check for Customer) -->
+  <script>
+    const role = sessionStorage.getItem("userRole");
+    if (!role || role.toLowerCase() !== "customer") {
+      window.location.href = "../login.html";
+    }
+  </script>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">Repair Service Portal</div>
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="create-request.html">Create Request</a>
+      <a href="my-requests.html">My Requests</a>
+    </div>
+    <div class="nav-user">
+      <span id="user-display">Customer</span>
+      <button id="logout-btn" class="btn-secondary">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Dashboard Container -->
+  <div class="page-container">
+    <div class="welcome-header">
+      <h2>Welcome Back!</h2>
+      <p>Manage your device repairs, track progress, or submit new service requests.</p>
+    </div>
+
+    <!-- Status Overview Counters -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total Requests</h3>
+        <p class="stat-num" id="stat-total">0</p>
+      </div>
+      <div class="stat-card stat-pending">
+        <h3>Pending</h3>
+        <p class="stat-num" id="stat-pending">0</p>
+      </div>
+      <div class="stat-card stat-progress">
+        <h3>In Progress</h3>
+        <p class="stat-num" id="stat-progress">0</p>
+      </div>
+      <div class="stat-card stat-completed">
+        <h3>Completed</h3>
+        <p class="stat-num" id="stat-completed">0</p>
+      </div>
+    </div>
+
+    <!-- Primary Action Cards -->
+    <div class="action-grid">
+      <div class="action-card">
+        <h3>Submit a Repair Request</h3>
+        <p>Having issues with a device? Fill out the service form and get a technician assigned to inspect it.</p>
+        <a href="create-request.html" class="btn-primary-link">Create Request</a>
+      </div>
+
+      <div class="action-card">
+        <h3>View & Track My Requests</h3>
+        <p>Go to your requests page to review your submission history, assigned technicians, and live status updates.</p>
+        <a href="my-requests.html" class="btn-primary-link">Go to My Requests</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/customer.js?v=2"></script>
+</body>
+</html>

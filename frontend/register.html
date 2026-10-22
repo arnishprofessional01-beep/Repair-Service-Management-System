@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repair Service - Register</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-header">
+      <h2>Create an Account</h2>
+      <p>Fill in the details below to register</p>
+    </div>
+
+    <div id="alert-message" class="alert hidden"></div>
+
+    <form id="register-form" novalidate>
+      <div class="form-group">
+        <label>Register As</label>
+        <div class="role-selector">
+          <label><input type="radio" name="registerRole" value="customer" checked /> Customer</label>
+          <label><input type="radio" name="registerRole" value="admin" /> Admin</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-name">Full Name</label>
+        <input type="text" id="reg-name" placeholder="Letters and spaces only" required />
+        <span class="error-text" id="reg-name-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-email">Email Address</label>
+        <input type="email" id="reg-email" placeholder="name@example.com" required />
+        <span class="error-text" id="reg-email-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-phone">Phone Number</label>
+        <input type="tel" id="reg-phone" placeholder="10-digit mobile number" maxlength="10" required />
+        <span class="error-text" id="reg-phone-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="reg-password">Password</label>
+        <input type="password" id="reg-password" placeholder="Minimum 6 characters" required />
+        <span class="error-text" id="reg-password-error"></span>
+      </div>
+
+      <button type="submit" class="btn-primary">Create Account</button>
+
+      <p class="toggle-text">
+        Already registered? <a href="login.html">Back to Login</a>
+      </p>
+    </form>
+  </div>
+
+  <script src="js/register.js"></script>
+</body>
+</html>

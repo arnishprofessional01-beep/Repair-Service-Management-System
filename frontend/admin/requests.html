@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Requests - Admin Portal</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <!-- Admin Auth Guard (Case-insensitive) -->
+  <script>
+    const role = sessionStorage.getItem("userRole");
+    if (!role || role.toLowerCase() !== "admin") {
+      window.location.href = "../login.html";
+    }
+  </script>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-brand">Admin Portal - Repair Service</div>
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="requests.html" class="active">Manage Requests</a>
+      <a href="technicians.html">Technicians</a>
+    </div>
+    <div class="nav-user">
+      <span id="admin-user-display">Admin</span>
+      <button id="admin-logout-btn" class="btn-secondary">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <div class="table-container">
+      <div class="table-header">
+        <h2>Customer Repair Requests</h2>
+        <span id="admin-request-count" style="font-size: 14px; color: #64748b;">Showing all tickets</span>
+      </div>
+
+      <div id="admin-alert" class="alert hidden" style="margin-bottom: 16px;"></div>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Service</th>
+              <th>Device</th>
+              <th>Problem</th>
+              <th>Date</th>
+              <th>Assign Technician</th>
+              <th>Update Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="admin-requests-tbody">
+            <!-- Populated dynamically via admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <p id="no-admin-requests" class="empty-state hidden">No repair requests have been submitted yet.</p>
+    </div>
+  </div>
+
+  <script src="../js/admin.js?v=999"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Repair Service</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <!-- Admin Auth Guard (Case-insensitive check for Admin) -->
+  <script>
+    const role = sessionStorage.getItem("userRole");
+    if (!role || role.toLowerCase() !== "admin") {
+      window.location.href = "../login.html";
+    }
+  </script>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-brand">Admin Portal - Repair Service</div>
+    <div class="nav-links">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="requests.html">Manage Requests</a>
+      <a href="technicians.html">Technicians</a>
+    </div>
+    <div class="nav-user">
+      <span id="admin-user-display">Admin</span>
+      <button id="admin-logout-btn" class="btn-secondary">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <div class="welcome-header">
+      <h2>System Overview</h2>
+      <p>Monitor service requests, track technicians, and manage repair statuses across the system.</p>
+    </div>
+
+    <!-- Admin Metric Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total Requests</h3>
+        <p class="stat-num" id="admin-stat-total">0</p>
+      </div>
+      <div class="stat-card stat-pending">
+        <h3>Pending Assignment</h3>
+        <p class="stat-num" id="admin-stat-pending">0</p>
+      </div>
+      <div class="stat-card stat-progress">
+        <h3>In Progress / Assigned</h3>
+        <p class="stat-num" id="admin-stat-progress">0</p>
+      </div>
+      <div class="stat-card stat-completed">
+        <h3>Completed Repairs</h3>
+        <p class="stat-num" id="admin-stat-completed">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Active Technicians</h3>
+        <p class="stat-num" id="admin-stat-techs">0</p>
+      </div>
+    </div>
+
+    <!-- Navigation Quick Actions -->
+    <div class="action-grid">
+      <div class="action-card">
+        <h3>Manage Service Requests</h3>
+        <p>Review customer repair tickets, assign available technicians, and update diagnostic and completion statuses.</p>
+        <a href="requests.html" class="btn-primary-link">Open Requests Table</a>
+      </div>
+
+      <div class="action-card">
+        <h3>Manage Technicians</h3>
+        <p>Add new service technicians, specify repair specialties, view contact information, or delete records.</p>
+        <a href="technicians.html" class="btn-primary-link">Manage Technicians</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/admin.js"></script>
+</body>
+</html>

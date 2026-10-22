@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Technicians - Admin Portal</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <!-- Admin Auth Guard (Case-insensitive check for Admin) -->
+  <script>
+    const role = sessionStorage.getItem("userRole");
+    if (!role || role.toLowerCase() !== "admin") {
+      window.location.href = "../login.html";
+    }
+  </script>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-brand">Admin Portal - Repair Service</div>
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="requests.html">Manage Requests</a>
+      <a href="technicians.html" class="active">Technicians</a>
+    </div>
+    <div class="nav-user">
+      <span id="admin-user-display">Admin</span>
+      <button id="admin-logout-btn" class="btn-secondary">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <!-- Add Technician Form -->
+    <div class="form-card" style="margin-bottom: 30px;">
+      <h2>Add New Technician</h2>
+      <p class="subtitle">Register a technician to assign them to repair jobs.</p>
+
+      <div id="tech-alert" class="alert hidden"></div>
+
+      <form id="add-tech-form" novalidate>
+        <div class="form-group">
+          <label for="tech-name">Technician Name</label>
+          <input type="text" id="tech-name" placeholder="Letters only (e.g., Amit Kumar)" required />
+          <span class="error-text" id="tech-name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="tech-phone">Phone Number</label>
+          <input type="tel" id="tech-phone" maxlength="10" placeholder="10-digit number (e.g., 9876543210)" required />
+          <span class="error-text" id="tech-phone-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="tech-specialization">Specialization</label>
+          <select id="tech-specialization" required>
+            <option value="">-- Select Specialization --</option>
+            <option value="Laptop Repair">Laptop Repair</option>
+            <option value="Mobile Repair">Mobile Repair</option>
+            <option value="Printer Repair">Printer Repair</option>
+            <option value="Tablet Repair">Tablet Repair</option>
+            <option value="General Hardware">General Hardware</option>
+          </select>
+          <span class="error-text" id="tech-spec-error"></span>
+        </div>
+
+        <button type="submit" class="btn-primary">Add Technician</button>
+      </form>
+    </div>
+
+    <!-- Technicians Roster Table -->
+    <div class="table-container">
+      <div class="table-header">
+        <h2>Active Technicians</h2>
+      </div>
+
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Tech ID</th>
+              <th>Full Name</th>
+              <th>Phone</th>
+              <th>Specialization</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tech-table-tbody">
+            <!-- Populated dynamically via admin.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <p id="no-techs-msg" class="empty-state hidden">No technicians registered. Add one using the form above.</p>
+    </div>
+  </div>
+
+  <script src="../js/admin.js?v=999"></script>
+</body>
+</html>

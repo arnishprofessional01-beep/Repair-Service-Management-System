@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repair Service - Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-header">
+      <h2>Welcome Back</h2>
+      <p>Please enter your details to login</p>
+    </div>
+
+    <div id="alert-message" class="alert hidden"></div>
+
+    <form id="login-form" novalidate>
+      <div class="form-group">
+        <label>Login As</label>
+        <div class="role-selector">
+          <label><input type="radio" name="loginRole" value="customer" checked /> Customer</label>
+          <label><input type="radio" name="loginRole" value="admin" /> Admin</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="login-email">Email Address</label>
+        <input type="email" id="login-email" placeholder="name@example.com" required />
+        <span class="error-text" id="login-email-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" placeholder="Enter password" required />
+        <span class="error-text" id="login-password-error"></span>
+      </div>
+
+      <button type="submit" class="btn-primary">Login</button>
+      
+      <p class="toggle-text">
+        Don't have an account? <a href="register.html">Register here</a>
+      </p>
+    </form>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

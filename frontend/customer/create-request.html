@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Repair Request - Repair Service</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <!-- Auth Guard (Case-insensitive check for Customer) -->
+  <script>
+    const role = sessionStorage.getItem("userRole");
+    if (!role || role.toLowerCase() !== "customer") {
+      window.location.href = "../login.html";
+    }
+  </script>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">Repair Service Portal</div>
+    <div class="nav-links">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="create-request.html" class="active">Create Request</a>
+      <a href="my-requests.html">My Requests</a>
+    </div>
+    <div class="nav-user">
+      <span id="user-display">Customer</span>
+      <button id="logout-btn" class="btn-secondary">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <div class="form-card">
+      <h2>Submit a Repair Request</h2>
+      <p class="subtitle">Fill out the form below to request repair service for your device.</p>
+
+      <div id="request-alert" class="alert hidden"></div>
+
+      <form id="request-form" novalidate>
+        <div class="form-group">
+          <label for="service-type">Service Type</label>
+          <select id="service-type" required>
+            <option value="">-- Select Service Type --</option>
+            <option value="Laptop Repair">Laptop Repair</option>
+            <option value="Mobile Repair">Mobile Repair</option>
+            <option value="Printer Repair">Printer Repair</option>
+            <option value="Tablet Repair">Tablet Repair</option>
+            <option value="Other">Other</option>
+          </select>
+          <span class="error-text" id="service-type-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="device-name">Device Name & Model</label>
+          <input type="text" id="device-name" placeholder="e.g., HP Pavilion 15, iPhone 13" required />
+          <span class="error-text" id="device-name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="problem-summary">Problem Summary</label>
+          <input type="text" id="problem-summary" placeholder="e.g., Screen broken, battery draining fast" required />
+          <span class="error-text" id="problem-summary-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Detailed Description</label>
+          <textarea id="description" rows="4" placeholder="Provide extra details on what happened..." required></textarea>
+          <span class="error-text" id="description-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="preferred-date">Preferred Service Date</label>
+          <input type="date" id="preferred-date" required />
+          <span class="error-text" id="preferred-date-error"></span>
+        </div>
+
+        <button type="submit" class="btn-primary">Submit Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/customer.js"></script>
+</body>
+</html>
